@@ -51,7 +51,7 @@ c. Agregar un nuevo request en Postman para GET /api/todoitems.
 d. Agregar un header **Authorization** de la siguente forma:
 	- Authorization: Bearer [access_token]
 	
-e. Ejecutar el request y esperar la respuesta 200 OK. En caso de tener una respuesta 401   Unauthorized. 
+e. Ejecutar el request y esperar la respuesta 200 OK. En caso de tener una respuesta 401 Unauthorized, revisar los pasos anteriores. 
 
 
 
@@ -102,7 +102,7 @@ public class HasScopeRequirement : IAuthorizationRequirement
     }
 }
 ```
-4. Para que TodoAPI autorice se debe agregar el siguiente codigo al archivo **Program.cs** antes de la linea builder.Build():
+4. Para que TodoAPI autorice se debe agregar el siguiente código al archivo **Program.cs** antes de la línea builder.Build():
 ```csharp
 //Configuracion para Validar Autorización. 
 builder.Services.AddAuthorization(options =>
@@ -114,7 +114,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 ```
 
-5. En **Program.cs ** agregar la siguente linea despues de **app.UseAuthentication();**:
+5. En **Program.cs** agregar la siguente línea después de **app.UseAuthentication();**:
 ```csharp
 //Habilitamos Autenticacion.
 app.UseAuthentication();
@@ -143,3 +143,5 @@ app.UseAuthorization();
 ....
 
 ```
+
+8. Probar con Postman la autenticación / autorización, agregando y quitando permisos al token B2B.

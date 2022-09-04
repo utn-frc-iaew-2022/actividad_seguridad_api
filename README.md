@@ -2,7 +2,7 @@
  # Actividad Seguridad API - Desarrollo Autenticación y Autorización de TodoAPI
 
 ## Autenticación 
-1. Para que la API tenga autenticación agregar el siguiente codigo al archivo Program.cs antes de la linea builder.Build():
+1. Para que la API tenga autenticación agregar el siguiente código al archivo Program.cs antes de la linea builder.Build():
 
 ```csharp
 //Configuracion para Validar Autenticacion.

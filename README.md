@@ -40,12 +40,17 @@ namespace TodoApi.Controllers
         ...
 ```
 
-3. Probar desde Postman. 
+3. Probar desde Postman.
+ 
 a. Compilar e Iniciar TodoAPI. 
+
 b. Abrir Postman y generar un access_token. 
+
 c. Agregar un nuevo request en Postman para GET /api/todoitems.
+
 d. Agregar un header **Authorization** de la siguente forma:
 	- Authorization: Bearer [access_token]
+	
 e. Ejecutar el request y esperar la respuesta 200 OK. En caso de tener una respuesta 401   Unauthorized. 
 
 

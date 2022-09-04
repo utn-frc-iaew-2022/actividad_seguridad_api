@@ -56,7 +56,7 @@ e. Ejecutar el request y esperar la respuesta 200 OK. En caso de tener una respu
 
 
 ## Autorización
-1. Crear una carpeta de nombre **Authorization**.
+1. Crear una carpeta de nombre **Authorization** en la raiz del proyecto con VSCode.
 2. Crear el archivo **HasScopeHandler.cs** con el siguiente código: 
 ```csharp
 // HasScopeHandler.cs

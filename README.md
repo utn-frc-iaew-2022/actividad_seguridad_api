@@ -21,7 +21,7 @@ builder.Services.AddAuthentication(options  =>
 var  app  =  builder.Build();
 ```
 
-2. En el archivo **TodoItemsController.cs** agregar un decorado [Authorize] para indicar que operaciones deben validar autenticacion y cuales no. Si lo definimos a nivel de Controller aplica a todas las operaciones de ese controlador:
+2. En el archivo **TodoItemsController.cs** agregar un decorado **[Authorize]** para indicar que operaciones deben validar autenticación y cuales no. Si lo definimos a nivel de Controller aplica a todas las operaciones de ese controlador:
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;

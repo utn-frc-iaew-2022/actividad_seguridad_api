@@ -102,7 +102,7 @@ public class HasScopeRequirement : IAuthorizationRequirement
     }
 }
 ```
-4. Para que TodoAPI autorice se debe agregar el siguiente codigo al archivo **Program.cs ** antes de la linea builder.Build():
+4. Para que TodoAPI autorice se debe agregar el siguiente codigo al archivo **Program.cs** antes de la linea builder.Build():
 ```csharp
 //Configuracion para Validar Autorización. 
 builder.Services.AddAuthorization(options =>

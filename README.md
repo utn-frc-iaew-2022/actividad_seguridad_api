@@ -40,7 +40,17 @@ namespace TodoApi.Controllers
         ...
 ```
 
-3. Probar desde Postman.
+4. En **Program.cs** agregar la siguente línea después de **app.UseAuthentication();**:
+```csharp
+//Habilitamos Autenticacion.
+app.UseAuthentication();
+
+//Habilitamos Autorización. 
+app.UseAuthorization();
+
+```
+
+5. Probar desde Postman.
  
 a. Compilar e Iniciar TodoAPI. 
 
@@ -114,17 +124,9 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 ```
 
-5. En **Program.cs** agregar la siguente línea después de **app.UseAuthentication();**:
-```csharp
-//Habilitamos Autenticacion.
-app.UseAuthentication();
 
-//Habilitamos Autorización. 
-app.UseAuthorization();
 
-```
-
-6. Agregar validaciones de scope **read:todoitems** en operaciones GET con el decorado **[Authorize]**:
+5. Agregar validaciones de scope **read:todoitems** en operaciones GET con el decorado **[Authorize]**:
 ```csharp
 ....
     // GET: api/TodoItems/5
@@ -134,7 +136,7 @@ app.UseAuthorization();
 ....
 
 ```
-7. Agregar validaciones de scope **write:todoitems** en operaciones POST/PUT/DELETE con el decorado **[Authorize]**::
+6. Agregar validaciones de scope **write:todoitems** en operaciones POST/PUT/DELETE con el decorado **[Authorize]**::
 ```csharp
 ....
         [HttpPost]
@@ -144,4 +146,4 @@ app.UseAuthorization();
 
 ```
 
-8. Probar con Postman la autenticación / autorización, agregando y quitando permisos al token B2B.
+7. Probar con Postman la autenticación / autorización, agregando y quitando permisos al token B2B.

@@ -18,6 +18,7 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
+        [Authorize("read:todoitems")]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
             return await _context.TodoItems
@@ -27,6 +28,7 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
+        [Authorize("read:todoitems")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
@@ -41,6 +43,7 @@ namespace TodoApi.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize("write:todoitems")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
             if (id != todoItemDTO.Id)
@@ -54,15 +57,8 @@ namespace TodoApi.Controllers
                 return NotFound();
             }
 
-            if (todoItemDTO.Name != null)
-            {
-                todoItem.Name = todoItemDTO.Name;
-            }
-
-            if (todoItemDTO.IsComplete != null)
-            {
-                todoItem.IsComplete = todoItemDTO.IsComplete;
-            }
+            todoItem.Name = todoItemDTO.Name;
+            todoItem.IsComplete = todoItemDTO.IsComplete;
 
             try
             {
@@ -78,13 +74,13 @@ namespace TodoApi.Controllers
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize("write:todoitems")]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
             var todoItem = new TodoItem
             {
                 IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name,
-                Status = todoItemDTO.Status,
+                Name = todoItemDTO.Name
             };
 
             _context.TodoItems.Add(todoItem);
@@ -98,6 +94,7 @@ namespace TodoApi.Controllers
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
+        [Authorize("write:todoitems")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
@@ -123,7 +120,6 @@ namespace TodoApi.Controllers
             {
                 Id = todoItem.Id,
                 Name = todoItem.Name,
-                Status = todoItem.Status,
                 IsComplete = todoItem.IsComplete
             };
     }
